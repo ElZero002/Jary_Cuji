@@ -1,0 +1,17 @@
+# Dockerfile personalizado con apellido (Archivo: Dockerfile_cuji)
+FROM node:18-alpine
+
+LABEL maintainer="Jary Cuji <tu-email@example.com>"
+WORKDIR /app
+
+# Copiar package.json y package-lock.json si existiera
+COPY package.json /app/package.json
+
+# Instalar dependencias
+RUN npm install --production
+
+# Copiar el resto del código
+COPY . /app
+
+EXPOSE 3000
+CMD ["npm", "start"]
